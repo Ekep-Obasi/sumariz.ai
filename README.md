@@ -1,36 +1,44 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Sumariz.ai
 
-## Getting Started
+<img src="public/preview.PNG" alt="https://github.com/Ekep-Obasi" />
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This Next.js-based AI Summarization Tool incorporates Tesseract for image-to-text conversion. It enables users to summarize text content efficiently or extract text from images for quick comprehension of large amounts of information.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Text Summarization**: Condenses lengthy text passages into concise summaries using advanced NLP techniques.
+- **Image-to-Text Conversion**: Extracts text from images, making them editable.
+- **User-friendly Interface**: Clean and intuitive UI for easy usage.
+- **Next.js Framework**: Ensures high performance and scalability.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Usage
 
-## Learn More
+### Text Summarization
 
-To learn more about Next.js, take a look at the following resources:
+1. Enter or paste text into the provided input area.
+2. Click "Summarize" to generate a summarized version.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Image-to-Text Conversion
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+1. Click "Upload Image" and select an image file.
+2. Extracted text is displayed, editable as needed.
 
-## Deploy on Vercel
+## Installation
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Clone this repository.
+2. Install dependencies.
+3. Start the development server.
+4. Visit `http://localhost:3000`.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Contributing
+
+Contributions are welcome! Follow project guidelines and submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Support
+
+For questions or issues, [open an issue](https://github.com/your-username/ai-summarization-tool/issues) on GitHub.
