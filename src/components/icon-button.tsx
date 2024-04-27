@@ -8,7 +8,7 @@ interface Props extends ButtonProps {
 
 const IconButton: React.FC<Props> = ({ text, children, ...props }) => {
   return (
-    <Button className={`flex flex-row space-x-2 ${props.className}`} {...props}>
+    <Button {...props} className={`flex flex-row space-x-2 ${props.className}`}>
       <span>{children}</span>
       <span>{text}</span>
     </Button>

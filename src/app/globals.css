@@ -79,6 +79,7 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: var(--secondary) var(--primary);
+  scroll-behavior: smooth;
 }
 
 /* Chrome, Edge, and Safari */

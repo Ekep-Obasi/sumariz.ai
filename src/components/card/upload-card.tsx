@@ -1,7 +1,6 @@
 "use client";
 
 import React from "react";
-
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import ImagePicker from "../image-picker";
@@ -42,7 +41,7 @@ export function UploadCard() {
               <FormItem>
                 <FormControl>
                   <Textarea
-                    className="h-[350px]"
+                    className="h-[350px] focus-visible:ring-0"
                     placeholder="Type or paste the text you want to summarize here"
                     {...field}
                     onChange={handleChange}
@@ -55,8 +54,13 @@ export function UploadCard() {
         <CardFooter className="w-full flex flex-row justify-between p-0 px-2 mb-3">
           <ImagePicker />
           <Button type="submit">Summarize</Button>
-          <IconButton text="Delete" variant="ghost" onClick={handleDelete}>
-            <Icons.trash />
+          <IconButton
+            className="text-red-300"
+            text="Delete"
+            variant="ghost"
+            onClick={handleDelete}
+          >
+            <Icons.trash color="text-red-300" />
           </IconButton>
         </CardFooter>
       </form>
