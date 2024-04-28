@@ -10,10 +10,10 @@ function Header() {
 
   return (
     <header className="w-full flex flex-col justify-center sticky top-0 z-50 bg-inherit">
-      <div className="flex flex-row justify-between px-8 py-4">
-        <div className="text-2xl md:text-3xl font-bold dark:text-white text-center">
+      <div className="flex flex-row justify-between items-center px-8 py-4">
+        <span className="text-xl md:text-3xl font-bold dark:text-white text-center">
           SUMARIZ.AI
-        </div>
+        </span>
         <div className="flex flex-row space-x-3 items-center">
           <Link href={githubLink} target="_blank">
             <IconButton text="Contribute" variant="ghost">
