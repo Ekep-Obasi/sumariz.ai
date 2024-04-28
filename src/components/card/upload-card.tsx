@@ -1,30 +1,37 @@
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import ImagePicker from "../image-picker";
 import { Textarea } from "../ui/textarea";
-import { useChat } from "ai/react";
 import { useFormContext } from "react-hook-form";
 import { FormControl, FormField, FormItem } from "../ui/form";
 import { Icons } from "../icons";
 import IconButton from "../icon-button";
+import { summarizeText } from "@/utils/summarize";
 
 export function UploadCard() {
-  const { messages, handleInputChange, handleSubmit } = useChat();
   const method = useFormContext();
+  const [loading, setLoading] = useState(false);
 
   const handleDelete = () => method.setValue("prompt", "");
 
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    handleInputChange(e);
-    method.setValue("prompt", e.target.value);
-  };
+  const userInput = method.watch("prompt");
 
-  const handleSummarize = (e: React.FormEvent<HTMLFormElement>) => {
-    handleSubmit(e);
-    method.setValue("messages", messages);
+  const handleSummarize = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setLoading(true);
+
+    method.setValue("summarization-output", "loading...");
+
+    const result = await summarizeText(userInput);
+
+    console.log(result);
+
+    method.setValue("summarization-output", result[0]);
+
+    setLoading(false);
   };
 
   return (
@@ -44,7 +51,6 @@ export function UploadCard() {
                     className="h-[350px] focus-visible:ring-0"
                     placeholder="Type or paste the text you want to summarize here"
                     {...field}
-                    onChange={handleChange}
                   />
                 </FormControl>
               </FormItem>
@@ -53,11 +59,14 @@ export function UploadCard() {
         </CardContent>
         <CardFooter className="w-full flex flex-row justify-between p-0 px-2 mb-3">
           <ImagePicker />
-          <Button type="submit">Summarize</Button>
+          <Button type="submit" disabled={loading}>
+            {loading ? "Please wait" : "Summarize"}
+          </Button>
           <IconButton
             className="text-red-300"
             text="Delete"
             variant="ghost"
+            type="button"
             onClick={handleDelete}
           >
             <Icons.trash color="text-red-300" />

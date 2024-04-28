@@ -2,7 +2,6 @@
 
 import { convertImageToText } from "@/utils/image-to-text";
 import React, { useRef, useState } from "react";
-import { Button } from "./ui/button";
 import { useFormContext } from "react-hook-form";
 import { Icons } from "./icons";
 import IconButton from "./icon-button";
@@ -45,6 +44,7 @@ const ImagePicker = () => {
         disabled={loading}
       />
       <IconButton
+        type="button"
         variant="ghost"
         text={!loading ? "Upload" : "Uploading..."}
         onClick={handleClick}

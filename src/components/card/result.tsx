@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { useChat } from "ai/react";
 import { DownloadIcon, CopyIcon } from "@radix-ui/react-icons";
 import IconButton from "../icon-button";
 import { generatePDF } from "@/utils/generate-pdf";
@@ -10,17 +9,16 @@ import { useToast } from "../ui/use-toast";
 import { useFormContext } from "react-hook-form";
 
 export function ResultCard() {
-  const { messages } = useChat();
   const { toast } = useToast();
   const { watch } = useFormContext();
 
-  const response = messages[0]?.content || "sumariz.ai first pdf";
-
-  console.log(watch("messages"));
+  const summarizedText = watch("summarization-output") as {
+    summary_text: string;
+  };
 
   const copyContent = async () => {
     try {
-      await navigator.clipboard.writeText(response);
+      await navigator.clipboard.writeText(summarizedText?.summary_text);
       toast({
         description: "Text copied",
       });
@@ -30,8 +28,8 @@ export function ResultCard() {
   };
 
   const handleDownload = () => {
-    if (response) {
-      generatePDF(response);
+    if (summarizedText) {
+      generatePDF(summarizedText.summary_text);
     } else {
       console.error("failed to generate pdf");
     }
@@ -45,13 +43,7 @@ export function ResultCard() {
             autoCorrect="false"
             className="h-[350px] ring-0 outline-none focus-visible:ring-0 border-none text-muted-foreground"
           >
-            {response}
-            {messages.map((m) => (
-              <div key={m.id} className="whitespace-pre-wrap">
-                {m.role === "user" ? "User: " : "AI: "}
-                {m.content}
-              </div>
-            ))}
+            {summarizedText?.summary_text}
           </div>
         </div>
       </CardContent>

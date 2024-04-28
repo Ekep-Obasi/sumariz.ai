@@ -18,5 +18,3 @@ export default function Widget() {
     </main>
   );
 }
-
-//   space-x-4
