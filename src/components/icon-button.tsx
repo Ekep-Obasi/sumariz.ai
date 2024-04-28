@@ -1,9 +1,9 @@
-import React from "react";
-import { Button, ButtonProps } from "./ui/button";
+import React from 'react'
+import { Button, ButtonProps } from './ui/button'
 
 interface Props extends ButtonProps {
-  text: string;
-  children: React.ReactNode;
+  text: string
+  children: React.ReactNode
 }
 
 const IconButton: React.FC<Props> = ({ text, children, ...props }) => {
@@ -12,7 +12,7 @@ const IconButton: React.FC<Props> = ({ text, children, ...props }) => {
       <span>{children}</span>
       <span>{text}</span>
     </Button>
-  );
-};
+  )
+}
 
-export default IconButton;
+export default IconButton

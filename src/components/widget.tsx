@@ -1,11 +1,11 @@
-"use client";
+'use client'
 
-import { UploadCard } from "./card/upload-card";
-import { ResultCard } from "./card/result";
-import { FormProvider, useForm } from "react-hook-form";
+import { UploadCard } from './card/upload-card'
+import { ResultCard } from './card/result'
+import { FormProvider, useForm } from 'react-hook-form'
 
 export default function Widget() {
-  const form = useForm();
+  const form = useForm()
   return (
     <main
       id="start"
@@ -16,5 +16,5 @@ export default function Widget() {
         <ResultCard />
       </FormProvider>
     </main>
-  );
+  )
 }

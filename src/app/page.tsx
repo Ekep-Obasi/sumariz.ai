@@ -1,6 +1,6 @@
-import Banner from "@/components/banner";
-import Footer from "@/components/footer";
-import Widget from "@/components/widget";
+import Banner from '@/components/banner'
+import Footer from '@/components/footer'
+import Widget from '@/components/widget'
 
 export default function Home() {
   return (
@@ -9,5 +9,5 @@ export default function Home() {
       <Widget />
       <Footer />
     </main>
-  );
+  )
 }
