@@ -4,7 +4,7 @@ import { convertImageToText } from '@/utils/image-to-text'
 import React, { useRef, useState } from 'react'
 import { useFormContext } from 'react-hook-form'
 import { Icons } from './icons'
-import IconButton from './icon-button'
+import { ButtonWithLoader } from './button-with-loader'
 
 const ImagePicker = () => {
   const imageRef = useRef<HTMLInputElement | null>(null)
@@ -37,9 +37,9 @@ const ImagePicker = () => {
   return (
     <>
       <input type="file" ref={imageRef} onChange={handleImageUpload} style={{ display: 'none' }} disabled={loading} />
-      <IconButton type="button" variant="ghost" text={!loading ? 'Upload' : 'Uploading...'} onClick={handleClick}>
-        <Icons.upload />
-      </IconButton>
+      <ButtonWithLoader type="button" variant="ghost" loading={loading} onClick={handleClick}>
+        <Icons.upload className="mr-2" /> {!loading ? 'Upload' : 'Uploading...'}
+      </ButtonWithLoader>
     </>
   )
 }

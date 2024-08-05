@@ -10,6 +10,7 @@ import { FormControl, FormField, FormItem } from '../ui/form'
 import { Icons } from '../icons'
 import IconButton from '../icon-button'
 import { summarizeText } from '@/utils/summarize'
+import { ButtonWithLoader } from '../button-with-loader'
 
 export function UploadCard() {
   const method = useFormContext()
@@ -27,9 +28,9 @@ export function UploadCard() {
 
     const result = await summarizeText(userInput)
 
-    console.log(result)
+    console.log(result.text)
 
-    method.setValue('summarization-output', result[0])
+    method.setValue('summarization-output', { summary_text: result.text })
 
     setLoading(false)
   }
@@ -56,9 +57,9 @@ export function UploadCard() {
         </CardContent>
         <CardFooter className="w-full flex flex-row justify-between p-0 px-2 mb-3">
           <ImagePicker />
-          <Button type="submit" disabled={loading}>
-            {loading ? 'Please wait' : 'Summarize'}
-          </Button>
+          <ButtonWithLoader type="submit" loading={loading}>
+            {loading ? 'Summarizing...' : 'Summarize'}
+          </ButtonWithLoader>
           <IconButton className="text-red-300" text="Delete" variant="ghost" type="button" onClick={handleDelete}>
             <Icons.trash color="text-red-300" />
           </IconButton>
