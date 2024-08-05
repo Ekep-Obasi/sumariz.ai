@@ -5,7 +5,7 @@ import { RecursiveCharacterTextSplitter } from 'langchain/text_splitter'
 export const summarizeText = async (text: string) => {
   const model = new OpenAI({
     temperature: 0,
-    apiKey: process.env.OPENAI_API_KEY,
+    apiKey: process.env.NEXT_PUBLIC_OPENAI_API_KEY,
   })
   const textSplitter = new RecursiveCharacterTextSplitter({ chunkSize: 1000, chunkOverlap: 500 })
   const docs = await textSplitter.createDocuments([text])
